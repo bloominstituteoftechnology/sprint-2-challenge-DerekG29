@@ -4,7 +4,7 @@
 <head>
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
-    // 👉 CHALLENGE 1
+  // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
       if (profile['active']) {
         if (!reason) {
@@ -19,17 +19,44 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      if ( (x < 1 || x > 3) || (y < 1 || y > 3) ) {
+        return 'invalid coordinates'
+      } else if (grid[y - 1][x - 1] === '🟦') {
+        return "🟦 🥳"
+      } else {
+        return "🟥 💀"
+      }
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+      const newObj = { ...obj }
+      for (let key in newObj) {
+        if (key.length > 9) {
+          return 'shorten all prop names to 9 chars or less'
+        } else if (newObj[key] === null) {
+          delete newObj[key]
+        } else if (newObj[key] === 1) {
+          newObj[key] = true
+        } else if (newObj[key] === 0) {
+          newObj[key] = false
+        }
+      }
+      return newObj
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
-
+      if (!text || forbidden.length === 0) {
+        return text
+      } else {
+        let splitText = text.split(' ')
+        for (let i = 0; i < forbidden.length; i++) {
+          for (let j = 0; j < splitText.length; j++) {
+            
+          }
+        } 
+      }
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
