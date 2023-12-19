@@ -47,28 +47,62 @@
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
+      let output = text.split(' ')
       if (!text || forbidden.length === 0) {
         return text
       } else {
-        let splitText = text.split(' ')
-        for (let i = 0; i < forbidden.length; i++) {
-          for (let j = 0; j < splitText.length; j++) {
-
-          } // to be completed
-        } 
+        for (let i = 0; i < forbidden.length; i++){
+          for (let j = 0; j < output.length; j++){
+            if (forbidden[i] === output[j]) {
+              let replacement = ''
+              for (let x = 0; x < output[j].length; x++){
+                replacement += 'x'
+              }
+              output[j] = replacement
+            }
+          }
+        }
       }
-    }
+      output = output.join(' ')
+      return output
+    }  
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
+      if (num.length !== 10) {
+        return 'number must be 10 digits'
+      } else {
+        for (let i = 0; i < 10; i++){
+          if (num[i] > '9' || num[i] < '0') {
+            return 'number must consist only of numbers'
+          }
+        }
+      }
+      return `(${num.slice(0, 3)}) ${num.slice(3, 6)}-${num.slice(6, 10)}`
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
-
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      sixes = 0
+      rolls = 0
+      while (sixes < 3) {
+        result = getRandomInt(1, 7)
+        console.log(result)
+        if (result === 6) {
+          sixes++
+        } else {
+          sixes = 0
+        }
+        rolls++
+      }
+      console.log(`It took ${rolls} rolls to roll 3 consecutive sixes`)
     }
-
+    
     // 🧪 DO NOT make any changes below this line ===================
     globalThis.challengeVersion = 1
     globalThis.profileActivation = profileActivation
